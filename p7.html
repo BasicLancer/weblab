@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sum of Even Numbers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    label {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 8px 16px; 
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sum of Even Numbers</h1>
+  <label for="inputNumbers">Enter numbers (comma-separated):</label>
+  <input type="text" id="inputNumbers" />
+  <button id="sumButton">Calculate Sum</button>
+  <p id="result"></p>
+
+  <script>
+    const sumEvens = numbers => {
+      const evens = numbers.filter(num => num % 2 === 0);
+      return evens.reduce((sum, num) => sum + num, 0);
+    };
+
+    document.getElementById('sumButton').addEventListener('click', () => {
+      const inputNumbers = document.getElementById('inputNumbers').value;
+      const numbersArray = inputNumbers.split(',').map(num => Number(num.trim()));
+      const sum = sumEvens(numbersArray);
+      document.getElementById('result').textContent = `Sum of even numbers: ${sum}`;
+    });
+  </script>
+</body>
+</html>
+
+

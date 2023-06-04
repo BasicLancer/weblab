@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    #output {
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function capitalizeFirstLetter(str) {
+      const words = str.split(' ');
+      const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+      return capitalizedWords.join(' ');
+    }
+    
+    function insertString(originalString, insertString, position) {
+      return originalString.slice(0, position) + insertString + originalString.slice(position);
+    }
+    
+    function isString(input) {
+      return typeof input === 'string';
+    }
+    
+    function splitStringToArray(str) {
+      return str.split(' ');
+    }
+    
+    function performOperations() {
+      const inputElement = document.getElementById('input');
+      const outputElement = document.getElementById('output');
+      
+      const input = inputElement.value;
+      
+      const capitalizedText = capitalizeFirstLetter(input);
+      const insertedText = insertString(input, 'inserted', 5);
+      const isStringCheck = isString(input);
+      const splitArray = splitStringToArray(input);
+      
+      outputElement.innerHTML = `<strong>Capitalized Text:</strong> ${capitalizedText}<br>`;
+      outputElement.innerHTML += `<strong>Inserted Text:</strong> ${insertedText}<br>`;
+      outputElement.innerHTML += `<strong>Is Input a String:</strong> ${isStringCheck}<br>`;
+      outputElement.innerHTML += `<strong>Split Array:</strong> ${splitArray.join(', ')}`;
+    }
+  </script>
+</head>
+<body>
+  <h2>String Operations</h2>
+  
+  <label for="input">Enter a string:</label>
+  <input type="text" id="input" placeholder="String">
+  
+  <button onclick="performOperations()">Perform Operations</button>
+  
+  <div id="output"></div>
+</body>
+</html>

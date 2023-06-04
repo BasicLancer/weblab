@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    #output {
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function listObjectProperties(object) {
+      return Object.values(object).join(', ');
+    }
+    
+    function displayProperties() {
+      const student = {
+        name: "Mohan Kumar",
+        Dept: "ISE",
+        id: 056
+      };
+      
+      const outputElement = document.getElementById('output');
+      const properties = listObjectProperties(student);
+      
+      outputElement.textContent = properties;
+    }
+  </script>
+</head>
+<body>
+  <h2>List Object Properties</h2>
+  
+  <button onclick="displayProperties()">Display Properties</button>
+  
+  <div id="output"></div>
+</body>
+</html>

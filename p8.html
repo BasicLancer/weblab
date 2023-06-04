@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jump Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    label {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Jump Search</h1>
+  <label for="arrayInput">Enter array elements (comma-separated):</label>
+  <input type="text" id="arrayInput" />
+  <label for="keyInput">Enter the key to search:</label>
+  <input type="text" id="keyInput" />
+  <button id="searchButton">Search</button>
+  <p id="result"></p>
+
+  <script>
+    // Function to perform Jump Search
+    const jumpSearch = (arr, key) => {
+      const n = arr.length;
+      const step = 100;
+      
+      let prev = 0;
+      while (arr[Math.min(step, n) - 1] < key) {
+        prev = step;
+        step += Math.floor(Math.sqrt(n));
+        if (prev >= n)
+          return -1;
+      }
+      
+      while (arr[prev] < key) {
+        prev++;
+        if (prev === Math.min(step, n))
+          return -1;
+      }
+      
+      if (arr[prev] === key)
+        return prev;
+      
+      return -1;
+    };
+
+    document.getElementById('searchButton').addEventListener('click', () => {
+      const userInput = document.getElementById('arrayInput').value;
+      const arr = userInput.split(',').map(num => parseInt(num.trim(), 10));
+
+      const searchKey = parseInt(document.getElementById('keyInput').value, 10);
+      
+      const resultIndex = jumpSearch(arr, searchKey);
+      const resultElement = document.getElementById('result');
+      
+      if (resultIndex !== -1) {
+        resultElement.textContent = `Key ${searchKey} found at index ${resultIndex}.`;
+      } else {
+        resultElement.textContent = `Key ${searchKey} not found.`;
+      }
+    });
+  </script>
+</body>
+</html>

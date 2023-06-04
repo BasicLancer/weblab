@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Set Program</title>
+</head>
+<body>
+  <h1>Set Program</h1>
+  <input type="text" id="input" placeholder="Enter a value">
+  <button onclick="addValue()">Add Value</button>
+  <button onclick="iterateOverSet()">Show</button>
+  <ul id="values"></ul>
+
+  <script>
+    let set = new Set();
+  
+    function addValue() {
+      let value = document.getElementById("input").value;
+      set.add(value);
+    }
+
+    function getValue() {
+        //clean the field
+      
+
+      let value = prompt("Enter a value to retrieve");
+      if (set.has(value)) {
+        alert("The value " + value + " is in the set");
+      } else {
+        alert("The value " + value + " is not in the set");
+      }
+    }
+   
+    function iterateOverSet() {
+      let values = Array.from(set);
+      for (let value of values) {
+        let li = document.createElement("li");
+        li.textContent = value;
+        document.getElementById("values").appendChild(li);
+      }
+    }
+  </script>
+</body>
+</html>

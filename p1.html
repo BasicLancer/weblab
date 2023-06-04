@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Test</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        p {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Number Test</h1>
+    <input id="numberInput" type="number" placeholder="Enter a number">
+    <button id="testButton">Test</button>
+    <p id="result"></p>
+
+    <script>
+        function numTest(number) {
+            return new Promise((resolve, reject) => {
+                if (number < 20) {
+                    resolve("The number is less than 20");
+                } else if (number > 20) {
+                    resolve("The number is greater than 20");
+                } else {
+                    reject("The number is equal to 20");
+                }
+            });
+        }
+
+        document.getElementById("testButton").addEventListener("click", () => {
+            const numberInput = document.getElementById("numberInput");
+            const result = document.getElementById("result");
+            const number = parseInt(numberInput.value);
+
+            if (isNaN(number)) {
+                result.textContent = "Please enter a valid number";
+            } else {
+                result.textContent = "Testing...";
+                numTest(number)
+                    .then((message) => {
+                        result.textContent = message;
+                    })
+                    .catch((error) => {
+                        result.textContent = error;
+                    });
+            }
+        });
+    </script>
+</body>
+</html>

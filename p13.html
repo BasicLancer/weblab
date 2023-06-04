@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    #output {
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function multiplyByTen(numbers) {
+      return numbers.map(number => number * 10);
+    }
+    
+    function performMultiplication() {
+      const inputElement = document.getElementById('input');
+      const outputElement = document.getElementById('output');
+      
+      const input = inputElement.value;
+      
+      const numbers = input.split(',');
+      const multipliedNumbers = multiplyByTen(numbers);
+      
+      outputElement.innerHTML = `<strong>Result:</strong> ${multipliedNumbers.join(', ')}`;
+    }
+  </script>
+</head>
+<body>
+  <h2>Multiply Array Elements by 10</h2>
+  
+  <label for="input">Enter comma-separated numbers:</label>
+  <input type="text" id="input" placeholder="Numbers">
+  
+  <button onclick="performMultiplication()">Multiply</button>
+  
+  <div id="output"></div>
+</body>
+</html>

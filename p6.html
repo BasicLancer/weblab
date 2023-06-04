@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div >
+    <h1>Alphabetical Order</h1>
+    <input type="text" id="inputString" />
+    <button onclick="sortthis()">Sort</button>
+    <button onclick="reversethis()">Reverse</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+
+    //   const sortButton = document.getElementById('sortButton');
+    //   sortButton.addEventListener('click', () => {
+    //     const inputString = document.getElementById('inputString').value;
+    //     const sortedString = sortStringAlphabetically(inputString);
+    //     document.getElementById('result').textContent = `Sorted string:` + sortedString;
+    //   });
+    // const sortStringAlphabetically = inputString => inputString.split('').sort().join('');
+    function sortStringAlphabetically(inputString) {
+      return inputString.split('').sort().join('');
+    }
+    function reverseString (inputString) {
+      return inputString.split("").reverse().join("");
+};
+
+      function sortthis(){
+        const inputString = document.getElementById('inputString').value;
+        const sortedString = sortStringAlphabetically(inputString);
+        document.getElementById('result').textContent = `Sorted string:` + sortedString;
+      }
+
+      function reversethis(){
+        const inputString = document.getElementById('inputString').value;
+        const sortedString = reverseString(inputString);
+        document.getElementById('result').textContent = `Reversed string:` + sortedString;
+      }
+  
+  </script>
+
+</body>
+</html>   
