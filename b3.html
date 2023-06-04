@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    #output {
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function delay(time) {
+      return new Promise(resolve => setTimeout(resolve, time));
+    }
+    
+    async function performArithmeticOperations() {
+      const outputElement = document.getElementById('output');
+      
+      const addPromise = delay(1000).then(() => 2 + 2);
+      outputElement.innerHTML += `<strong>Addition:</strong> ${await addPromise}<br>`;
+      
+      const subtractPromise = delay(2000).then(() => 5 - 3);
+      outputElement.innerHTML += `<strong>Subtraction:</strong> ${await subtractPromise}<br>`;
+      
+      const multiplyPromise = delay(3000).then(() => 4 * 6);
+      outputElement.innerHTML += `<strong>Multiplication:</strong> ${await multiplyPromise}<br>`;
+      
+      const dividePromise = delay(4000).then(() => 10 / 2);
+      outputElement.innerHTML += `<strong>Division:</strong> ${await dividePromise}<br>`;
+    }
+  </script>
+</head>
+<body>
+  <h2>Perform Arithmetic Operations</h2>
+  
+  <button onclick="performArithmeticOperations()">Perform Operations</button>
+  
+  <div id="output"></div>
+</body>
+</html>

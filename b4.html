@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    #output {
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function visitLocation(location) {
+      return new Promise((resolve, reject) => {
+        if (location === 'Paris') {
+          resolve("Let's take a trip to Paris");
+        } else {
+          reject("Invalid Location");
+        }
+      });
+    }
+    
+    function handleLocation() {
+      const location = prompt('Enter a location:');
+      const outputElement = document.getElementById('output');
+      
+      visitLocation(location)
+        .then(result => {
+          outputElement.textContent = result;
+        })
+        .catch(error => {
+          outputElement.textContent = error;
+        });
+    }
+  </script>
+</head>
+<body>
+  <h2>Visit Location</h2>
+  
+  <button onclick="handleLocation()">Check Location</button>
+  
+  <div id="output"></div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    #output {
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function checkInfection() {
+      const virusComposition = document.getElementById('virusComposition').value.toLowerCase();
+      const bloodCompositions = document.getElementById('bloodCompositions').value.toLowerCase().split('\n');
+      const outputElement = document.getElementById('output');
+      
+      let result = '';
+      
+      bloodCompositions.forEach(bloodComposition => {
+        if (isSubsequence(bloodComposition, virusComposition)) {
+          result += `${bloodComposition}: POSITIVE<br>`;
+        } else {
+          result += `${bloodComposition}: NEGATIVE<br>`;
+        }
+      });
+      
+      outputElement.innerHTML = result;
+    }
+    
+    function isSubsequence(subsequence, sequence) {
+      let i = 0;
+      let j = 0;
+      
+      while (i < subsequence.length && j < sequence.length) {
+        if (subsequence[i] === sequence[j]) {
+          i++;
+        }
+        j++;
+      }
+      
+      return i === subsequence.length;
+    }
+  </script>
+</head>
+<body>
+  <h2>Virus Infection Check</h2>
+  
+  <label for="virusComposition">Virus Composition:</label>
+  <input type="text" id="virusComposition"><br>
+  
+  <label for="bloodCompositions">Blood Compositions (one per line):</label>
+  <input id="bloodCompositions"></textarea><br>
+  
+  <button onclick="checkInfection()">Check Infection</button>
+  
+  <div id="output"></div>
+</body>
+</html>
